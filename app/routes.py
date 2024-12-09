@@ -32,6 +32,8 @@ def productDetail(id):
         return ProductController.show(id)
     elif request.method == 'PUT':
         return ProductController.update(id)
+    elif request.method == 'DELETE':
+        return ProductController.delete(id)
 
 @app.route('/products/<product_id>/categories/<category_id>', methods=['POST'])
 def addCategoryToProduct(product_id, category_id):
@@ -50,3 +52,5 @@ def categoryDetail(id):
         return CategoryController.show(id)
     elif request.method == 'PUT':
         return CategoryController.update(id)
+    elif request.method == 'DELETE':
+        return CategoryController.delete(id)
