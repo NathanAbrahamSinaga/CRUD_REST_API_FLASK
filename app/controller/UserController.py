@@ -69,18 +69,14 @@ def singleTransform(users):
 
 def show(id):
     try:
-        # Query untuk mencari pengguna berdasarkan ID
         users = Users.query.filter_by(id=id).first()
         
-        # Jika pengguna tidak ditemukan
         if not users:
             return response.badRequest([], "User not found.")
         
-        # Transformasi data pengguna
         data = singleTransform(users)
         return response.ok(data, "User retrieved successfully.")
     
     except Exception as e:
-        # Cetak error untuk debugging
         print(f"An error occurred: {e}")
         return response.badRequest([], "An error occurred while retrieving the user.")

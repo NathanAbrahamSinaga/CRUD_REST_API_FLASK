@@ -3,10 +3,10 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-app = Flask(__name__)  # Inisialisasi Flask
-app.config.from_object(Config)  # Memuat konfigurasi dari objek Config
+app = Flask(__name__)
+app.config.from_object(Config)
 
-db = SQLAlchemy(app)  # Inisialisasi SQLAlchemy
-migrate = Migrate(app, db)  # Inisialisasi Flask-Migrate
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 from app import routes
 from app.model import user, todo
