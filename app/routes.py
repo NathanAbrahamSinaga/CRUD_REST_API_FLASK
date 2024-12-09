@@ -26,7 +26,7 @@ def products():
     else:
         return ProductController.store()
 
-@app.route('/products/<id>', methods=['GET', 'PUT'])
+@app.route('/products/<id>', methods=['GET', 'PUT', 'DELETE'])
 def productDetail(id):
     if request.method == 'GET':
         return ProductController.show(id)
@@ -44,7 +44,7 @@ def categories():
     else:
         return CategoryController.store()
 
-@app.route('/categories/<id>', methods=['GET', 'PUT'])
+@app.route('/categories/<id>', methods=['GET', 'PUT', 'DELETE'])
 def categoryDetail(id):
     if request.method == 'GET':
         return CategoryController.show(id)

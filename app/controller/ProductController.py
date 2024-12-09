@@ -102,3 +102,19 @@ def add_category_to_product(product_id, category_id):
     except Exception as e:
         print(e)
         return response.error('An error occurred while adding category to product', 500)
+    
+def delete(id):
+    try:
+        product = Product.query.filter_by(id=id).first()
+        
+        if not product:
+            return response.error('Product not found', 404)
+            
+        db.session.delete(product)
+        db.session.commit()
+            
+        return response.ok('', 'Successfully deleted product!')
+        
+    except Exception as e:
+        print(e)
+        return response.error('An error occurred while deleting product', 500)

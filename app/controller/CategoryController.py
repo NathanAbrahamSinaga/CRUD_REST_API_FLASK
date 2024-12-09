@@ -79,3 +79,20 @@ def show(id):
     except Exception as e:
         print(f"An error occurred: {e}")
         return response.badRequest([], "An error occurred while retrieving the category.")
+
+
+def delete(id):
+    try:
+        category = CategoryProduct.query.filter_by(id=id).first()
+        
+        if not category:
+            return response.error('Category not found', 404)
+            
+        db.session.delete(category)
+        db.session.commit()
+            
+        return response.ok('', 'Successfully deleted category!')
+        
+    except Exception as e:
+        print(e)
+        return response.error('An error occurred while deleting category', 500)
